@@ -19,6 +19,9 @@ To launch this bot just run bot.py inside "acronym_decoder_bot/acronym_decoder_b
 OS X & Linux:
 
 ```sh
+pipenv install
+```
+```sh
 cd acronym_decoder_bot
 python3 bot.py
 ```
