@@ -133,6 +133,9 @@ async def process_show_command(message: types.Message):
 @dp.callback_query_handler(lambda callback_query: True)
 async def process_callback_button(callback_query: types.CallbackQuery):
 
+    """This handler processes switching buttons on inline keyboard
+    within output /show_all command"""
+
     curr_page = int(callback_query.data)
     paged_text = PaginatedText(text=emias_dict_db.show_all())
 
@@ -158,10 +161,15 @@ async def process_callback_button(callback_query: types.CallbackQuery):
 
 @dp.message_handler(content_types=types.ContentTypes.ANY)
 async def process_any(message):
+
+    """This handler processes every other message from user
+    that is not bot command and not within Bot states"""
+
     await process_start_command(message)
 
 
 if __name__ == '__main__':
+
     executor.start_polling(
         dispatcher=dp,
         skip_updates=True)

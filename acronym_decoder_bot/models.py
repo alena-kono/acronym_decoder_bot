@@ -11,7 +11,7 @@ from messages import EMOJI_ARROWS_RIGHT
 
 class AcronymExcelDatabase:
 
-    """Represents EMIAS .xlsx database of acronyms via pandas DataFrame"""
+    """Represents EMIAS .xlsx database of acronyms as pandas DataFrame"""
 
     def __init__(self, source):
         self.source = source
@@ -36,7 +36,7 @@ class AcronymExcelDatabase:
 
 class Match:
 
-    """Represents pattern match"""
+    """Represents the pattern matching with the dict"""
 
     def __init__(self, source: dict):
 
@@ -120,13 +120,15 @@ class Match:
 
 class TranslateAcronym(StatesGroup):
 
-    """Represents states of TranslateAcronym's processes"""
+    """Represents Bot states within /translate_acronym command"""
 
     waiting_for_acronym = State()
     waiting_for_number_of_choice = State()
 
 
 class MyPaginator(InlineKeyboardPaginator):
+
+    """Custom Paginator of the inline keyboard"""
 
     first_page_label = '<<'
     previous_page_label = '<'
@@ -136,6 +138,8 @@ class MyPaginator(InlineKeyboardPaginator):
 
 
 class PaginatedText:
+
+    """Represents text to be paginated"""
 
     def __init__(self, text: str, limit=4):
         self.text = text
