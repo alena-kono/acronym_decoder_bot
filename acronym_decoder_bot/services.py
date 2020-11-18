@@ -46,11 +46,9 @@ class PaginatedText:
             data=self.text.split(sep=delimiter),
             page=int(page) - 1,
             limit=self.limit)
-
         return delimiter.join(paginated_text)
 
     def show_len(self) -> int:
-
         return len(self.text.split())
 
     def show_page_count(self) -> int:
@@ -63,14 +61,12 @@ def load_acronym_excel_database() -> dict:
 
     """Loads excel db of EMIAS acronyms and returns a dict"""
 
-    emias = AcronymExcelDatabase(
-        pd.read_excel(PATH_TO_DB))
+    emias = AcronymExcelDatabase(pd.read_excel(PATH_TO_DB))
     emias.rename_columns(COLUMN_NAMES)
     emias.set_column_type('reg_number')
     emias.sort_values_by_ascending('reg_number')
     emias.set_index('acronym')
     emias = emias.to_dict()
-
     return emias
 
 
