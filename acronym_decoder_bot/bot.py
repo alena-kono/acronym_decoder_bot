@@ -12,7 +12,6 @@ from messages import COMMAND_MESSAGES, STATE_MESSAGES
 from models import TranslateAcronym, MyPaginator, PaginatedText
 from services import emias_dict_db
 
-# TODO create a /show_all command handler
 
 logging.basicConfig(level=logging.INFO)
 
