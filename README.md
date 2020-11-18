@@ -10,6 +10,8 @@ This is a completely educational project
 
 ## Build Status
 
+- [ ] add exception handling
+- [ ] add tests
 - [ ] transfer excel db to postgres
 
 ## Installation
