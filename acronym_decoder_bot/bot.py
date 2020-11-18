@@ -1,20 +1,23 @@
-import logging
 import os
+import sys
 
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from aiogram.utils.exceptions import MessageNotModified, MessageTextIsEmpty
+from loguru import logger
 
 from messages import COMMAND_MESSAGES, STATE_MESSAGES
-from services import (
-    MyPaginator,
-    PaginatedText,
-    TranslateAcronym,
-    emias_dict_db)
+from services import (MyPaginator, PaginatedText, TranslateAcronym,
+                      emias_dict_db)
 
-logging.basicConfig(level=logging.INFO)
+logger.add(
+    sys.stderr,
+    format='{time} {level} {message}',
+    colorize=True,
+    level='INFO'
+    )
 
 bot = Bot(token=os.getenv('TELEGRAM_API_TOKEN'))
 dp = Dispatcher(bot, storage=MemoryStorage())
