@@ -8,3 +8,9 @@ PATH_TO_DB = Path.joinpath(
     )
 
 MIN_MATCHES_TO_SHOW = 8
+
+BOT_COMMANDS = [
+    {'command': 'start', 'description': 'Начало работы / Сброс бота'},
+    {'command': 'translate_acronym', 'description': 'Перевести акроним'},
+    {'command': 'show_all', 'description': 'Вывести список всех акронимов'},
+]

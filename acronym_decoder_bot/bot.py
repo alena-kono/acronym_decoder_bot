@@ -8,6 +8,7 @@ from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from aiogram.utils.exceptions import MessageNotModified, MessageTextIsEmpty
 from loguru import logger
 
+from config.config import BOT_COMMANDS
 from messages import COMMAND_MESSAGES, STATE_MESSAGES
 from services import (MyPaginator, PaginatedText, TranslateAcronym,
                       emias_dict_db)
@@ -30,8 +31,15 @@ async def process_start_command(message: types.message):
     """This handler will be called when user
     sends /start command"""
 
-    await message.reply(
-        text=COMMAND_MESSAGES['start'])
+    is_commands_set = await bot.set_my_commands(commands=BOT_COMMANDS)
+    if is_commands_set:
+        await message.reply(
+            text=COMMAND_MESSAGES['start'])
+        return
+    else:
+        await message.reply(
+            text='Fail to set commands for this bot. Bot is broken.'
+        )
 
 
 @dp.message_handler(
