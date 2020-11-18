@@ -11,16 +11,16 @@ class AcronymExcelDatabase:
     def __init__(self, source):
         self.source = source
 
-    def rename_columns(self, new_column_names: list):
+    def rename_columns(self, new_column_names: list) -> None:
         self.source.columns = new_column_names
 
-    def set_column_type(self, column: str, data_type='str'):
+    def set_column_type(self, column: str, data_type='str') -> None:
         self.source[column] = self.source[column].astype(data_type)
 
-    def sort_values_by_ascending(self, column: str):
+    def sort_values_by_ascending(self, column: str) -> None:
         self.source.sort_values(column, inplace=True)
 
-    def set_index(self, column: str):
+    def set_index(self, column: str) -> None:
         self.source.drop_duplicates(column, keep='last', inplace=True)
         self.source.set_index(column, inplace=True)
 
@@ -41,14 +41,14 @@ class Match:
         self.is_few_found = False
         self.is_too_many_found = False
 
-    def reset(self):
+    def reset(self) -> None:
 
         self.found_matches = {}
         self.is_found = False
         self.is_few_found = False
         self.is_too_many_found = False
 
-    def display_match_results(self):
+    def display_match_results(self) -> str:
 
         if self.is_found:
             for key in self.found_matches.keys():
@@ -97,17 +97,17 @@ class Match:
 
         _register_found(self)
 
-    def choose_match_from_few(self, number_of_choice: int):
+    def choose_match_from_few(self, number_of_choice: int) -> str:
 
         for num, key in enumerate(sorted(
                 list(self.found_matches.keys())), start=1):
             if num == number_of_choice:
                 return self.found_matches[key]['full_name']
 
-    def display_len_of_found(self):
+    def display_len_of_found(self) -> int:
         return len(self.found_matches)
 
-    def show_all(self):
+    def show_all(self) -> str:
         return '\n'.join(
             [str(key) + ' -->> ' + str(
                 val['full_name']) for key, val in self.source.items()])
