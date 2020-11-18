@@ -4,14 +4,15 @@ import os
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
-from aiogram.types import (ReplyKeyboardMarkup,
-                           ReplyKeyboardRemove)
-from aiogram.utils.exceptions import MessageTextIsEmpty, MessageNotModified
+from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove
+from aiogram.utils.exceptions import MessageNotModified, MessageTextIsEmpty
 
 from messages import COMMAND_MESSAGES, STATE_MESSAGES
-from models import TranslateAcronym, MyPaginator, PaginatedText
-from services import emias_dict_db
-
+from services import (
+    MyPaginator,
+    PaginatedText,
+    TranslateAcronym,
+    emias_dict_db)
 
 logging.basicConfig(level=logging.INFO)
 
